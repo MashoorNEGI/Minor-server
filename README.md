@@ -1,7 +1,7 @@
 # Minor-server
 # npm i
 to build add dependencies
-#nodemon
+# nodemon
 to start the server
-#http 
+# http 
 for postman services
