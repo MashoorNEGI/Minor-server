@@ -1,0 +1,58 @@
+get http://localhost:3000
+
+###
+
+post http://localhost:3000/users/Register
+Content-Type: application/json
+
+{
+        "Fac_ID":20329038,
+        "Fac_Name":"deepak",
+        "Department":"Prof of Commerce",
+        "Phone_no":7292098071,
+        "Email":"ayushdp",
+        "Password":"Deepak123"
+}
+
+###
+
+post http://localhost:3000/users/Login
+Content-Type: application/json 
+
+{
+        "Fac_ID":20329038,
+        "Email":"ayushdp",
+        "Password":"Deepak123"
+}
+
+###
+
+post http://localhost:3000/addstudent
+Content-Type: application/json
+
+{
+        "Fac_ID":20329038,
+        "Sname":"Deep",
+        "Course":"BCA",
+        "Enroll_no":"013702020",
+        "Attendance": "Stable"
+}
+
+###
+
+get http://localhost:3000/getstudent
+Content-Type: application/json
+
+{
+        "Fac_ID":2028
+}
+
+###
+
+post http://localhost:3000/update
+Content-Type: application/json
+
+{
+        "Enroll_no":"013702020",
+        "Attendance":"Absent"
+}
