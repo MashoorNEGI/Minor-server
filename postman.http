@@ -10,7 +10,7 @@ Content-Type: application/json
         "Fac_Name":"deepak",
         "Department":"Prof of Commerce",
         "Phone_no":7292098071,
-        "Email":"ayushdp",
+        "Email":"ayushdeep",
         "Password":"Deepak123"
 }
 
@@ -21,7 +21,7 @@ Content-Type: application/json
 
 {
         "Fac_ID":20329038,
-        "Email":"ayushdp",
+        "Email":"ayushdeep",
         "Password":"Deepak123"
 }
 
@@ -34,7 +34,7 @@ Content-Type: application/json
         "Fac_ID":20329038,
         "Sname":"Deep",
         "Course":"BCA",
-        "Enroll_no":"013702020",
+        "Enroll_no":"01702020",
         "Attendance": "Stable"
 }
 
@@ -44,7 +44,7 @@ get http://localhost:3000/getstudent
 Content-Type: application/json
 
 {
-        "Fac_ID":2028
+        "Fac_ID":20329038
 }
 
 ###
@@ -53,6 +53,6 @@ post http://localhost:3000/update
 Content-Type: application/json
 
 {
-        "Enroll_no":"013702020",
-        "Attendance":"Absent"
+        "Enroll_no":"01702020",
+        "Attendance":"Present"
 }
