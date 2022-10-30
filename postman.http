@@ -6,11 +6,11 @@ post http://localhost:3000/users/Register
 Content-Type: application/json
 
 {
-        "Fac_ID":20329038,
+        "Fac_ID":232903,
         "Fac_Name":"deepak",
         "Department":"Prof of Commerce",
         "Phone_no":7292098071,
-        "Email":"ayushdeep",
+        "Email":"deep@gmail.com",
         "Password":"Deepak123"
 }
 
@@ -20,8 +20,8 @@ post http://localhost:3000/users/Login
 Content-Type: application/json 
 
 {
-        "Fac_ID":20329038,
-        "Email":"ayushdeep",
+        "Fac_ID":2032903,
+        "Email":"ayushdeep@gmail.com",
         "Password":"Deepak123"
 }
 

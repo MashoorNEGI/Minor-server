@@ -20,8 +20,9 @@ router.post("/Register", async (req, res) => {
   }
   try {
     const Exist = await User.findOne({ Email: Email });
-    if (Exist) {
-      return res.status(422).json({ Error: "Email already exist" });
+    const ID = await User.findOne({ Fac_ID: Fac_ID });
+    if (Exist || ID) {
+      return res.status(422).json({ Error: "Email or ID already exist" });
     }
     if (Password.match(/[a-z]/g) && Password.match(/[A-Z]/g) && Password.match(/[0-9]/g)) {
 
@@ -54,13 +55,11 @@ router.post("/Login", async (req, res) => {
       });
     }
     const userlogin = await User.findOne({ Email: Email });
-    const MatchId = await User.findOne({ Fac_ID: Fac_ID })
-
-    if (userlogin && MatchId) {
+    if (userlogin) {
 
       const match = await bcrypt.compare(Password, userlogin.Password);
-
-      if (!match) {
+      const MatchId = await User.findOne({ Fac_ID: Fac_ID, Email: Email })
+      if (!match || !MatchId) {
         res.status(400).json({
           Error: "Invalid credentials",
         });
