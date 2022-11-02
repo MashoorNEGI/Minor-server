@@ -1,8 +1,8 @@
-get http://localhost:3000
+get http://localhost:4000
 
 ###
 
-post http://localhost:3000/users/Register
+post http://localhost:4000/users/Register
 Content-Type: application/json
 
 {
@@ -10,13 +10,14 @@ Content-Type: application/json
         "Fac_Name":"deepak",
         "Department":"Prof of Commerce",
         "Phone_no":7292098071,
-        "Email":"deep@gmail.com",
+        "courses":"BCA",
+        "Email":"deepaknegi@gmail.com",
         "Password":"Deepak123"
 }
 
 ###
 
-post http://localhost:3000/users/Login
+post http://localhost:4000/users/Login
 Content-Type: application/json 
 
 {
@@ -27,7 +28,7 @@ Content-Type: application/json
 
 ###
 
-post http://localhost:3000/addstudent
+post http://localhost:4000/addstudent
 Content-Type: application/json
 
 {
@@ -40,7 +41,7 @@ Content-Type: application/json
 
 ###
 
-get http://localhost:3000/getstudent
+get http://localhost:4000/getstudent
 Content-Type: application/json
 
 {
@@ -49,10 +50,20 @@ Content-Type: application/json
 
 ###
 
-post http://localhost:3000/update
+post http://localhost:4000/update
 Content-Type: application/json
 
 {
         "Enroll_no":"01702020",
         "Attendance":"Present"
+}
+
+###
+
+post http://localhost:4000/users/courses
+Content-Type: application/json
+
+{
+        "Enroll_no":"2032903",
+        "courses":"BBA"
 }

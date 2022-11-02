@@ -16,6 +16,10 @@ var user = new Schema(
             type: String,
             required: true
         },
+        
+        courses:[
+            String
+        ],
         Phone_no: {
             type: Number,
             required: true

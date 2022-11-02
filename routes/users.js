@@ -11,8 +11,8 @@ router.get('/', function (req, res, next) {
 
 router.post("/Register", async (req, res) => {
 
-  const { Fac_ID, Fac_Name, Department, Phone_no, Email, Password } = req.body
-  if (!Fac_ID || !Fac_Name || !Department || !Phone_no || !Email || !Password) {
+  const { Fac_ID, Fac_Name, Department, Phone_no, Email, Password, courses } = req.body
+  if (!Fac_ID || !Fac_Name || !Department || !Phone_no || !Email || !Password || !courses) {
     res.status(400).json({
       Error: "Please Fill Data"
     })
@@ -26,7 +26,7 @@ router.post("/Register", async (req, res) => {
     }
     if (Password.match(/[a-z]/g) && Password.match(/[A-Z]/g) && Password.match(/[0-9]/g)) {
 
-      const user = new User({ Fac_ID, Fac_Name, Department, Email, Phone_no, Password })
+      const user = new User({ Fac_ID, Fac_Name, Department, courses, Email, Phone_no, Password })
       await user.save()
 
       res.json({ message: "user registerd successfully" })
@@ -63,11 +63,11 @@ router.post("/Login", async (req, res) => {
         res.status(400).json({
           Error: "Invalid credentials",
         });
-
       } else {
 
         res.json({
           message: "User Signin Successfully",
+          userlogin
         });
       }
     } else {
@@ -79,5 +79,29 @@ router.post("/Login", async (req, res) => {
     console.log(err);
   }
 });
+
+router.post("/courses", async (req, res) => {
+  const { courses, Enroll_no } = req.body
+  if (!courses || !Enroll_no) {
+    res.status(422).json({
+      Error: "Field Required !"
+    })
+  } else {
+    User.updateOne({ Enroll_no: Enroll_no }, {
+      $push:{
+        courses:courses
+      }
+    }, async (error, found) => {
+      if (!error) {
+
+        res.json({
+          message: "course updated"
+        })
+      } else {
+        console.log(error);
+      }
+    })
+  }
+})
 
 module.exports = router;
