@@ -59,11 +59,12 @@ router.post("/Login", async (req, res) => {
 
       const match = await bcrypt.compare(Password, userlogin.Password);
       const MatchId = await User.findOne({ Fac_ID: Fac_ID, Email: Email })
+      console.log(MatchId);
       if (!match || !MatchId) {
         res.status(400).json({
           Error: "Invalid credentials",
         });
-      } else {
+      } else {  
 
         res.json({
           message: "User Signin Successfully",
@@ -80,28 +81,5 @@ router.post("/Login", async (req, res) => {
   }
 });
 
-router.post("/courses", async (req, res) => {
-  const { courses, Enroll_no } = req.body
-  if (!courses || !Enroll_no) {
-    res.status(422).json({
-      Error: "Field Required !"
-    })
-  } else {
-    User.updateOne({ Enroll_no: Enroll_no }, {
-      $push:{
-        courses:courses
-      }
-    }, async (error, found) => {
-      if (!error) {
-
-        res.json({
-          message: "course updated"
-        })
-      } else {
-        console.log(error);
-      }
-    })
-  }
-})
 
 module.exports = router;

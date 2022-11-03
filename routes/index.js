@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const student = require('../model/Student');
-
+const User = require('../model/user')
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' });
@@ -40,16 +40,16 @@ router.post("/addstudent", async (req, res) => {
 /* GET Student. */
 
 router.get("/getstudent", async (req, res) => {
-  const Fac_ID = req.body.Fac_ID
-  if (!Fac_ID) {
+  const { Fac_ID, courses } = req.body
+  if (!Fac_ID || !courses) {
     res.status(422).json({
-      Error: "Faculty ID Required !"
+      Error: "Faculty ID or courses Required !"
     })
   } else {
-    student.find({ Fac_ID: Fac_ID }, (err, found) => {
-      if (!err) {
-        res.json(found)
-      }
+    const getstudent = await student.find({ Course: courses, Fac_ID: Fac_ID })
+    console.log(getstudent);
+    res.json({
+      getstudent
     })
   }
 })
@@ -64,7 +64,7 @@ router.post("/update", async (req, res) => {
     student.updateOne({ Enroll_no: Enroll_no }, { Attendance: Attendance }, async (error, found) => {
       if (!error) {
         res.json({
-          message: "updated to "+ Attendance
+          message: "updated to " + Attendance
         })
       } else {
         console.log(error);
@@ -73,4 +73,27 @@ router.post("/update", async (req, res) => {
   }
 })
 
+router.post("/addcourses", (req, res) => {
+  const { courses, Enroll_no } = req.body
+  if (!courses || !Enroll_no) {
+    res.status(422).json({
+      Error: "Field Required !"
+    })
+  } else {
+    User.updateOne({ Enroll_no: Enroll_no }, {
+      $push: {
+        courses: courses
+      }
+    }, (error, found) => {
+      if (!error) {
+
+        res.json({
+          message: "course updated"
+        })
+      } else {
+        console.log(error);
+      }
+    })
+  }
+})
 module.exports = router;

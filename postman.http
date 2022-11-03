@@ -21,8 +21,8 @@ post http://localhost:4000/users/Login
 Content-Type: application/json 
 
 {
-        "Fac_ID":2032903,
-        "Email":"ayushdeep@gmail.com",
+        "Fac_ID":232903,
+        "Email":"deepaknegi@gmail.com",
         "Password":"Deepak123"
 }
 
@@ -32,10 +32,10 @@ post http://localhost:4000/addstudent
 Content-Type: application/json
 
 {
-        "Fac_ID":20329038,
+        "Fac_ID":32903,
         "Sname":"Deep",
         "Course":"BCA",
-        "Enroll_no":"01702020",
+        "Enroll_no":"802189020",
         "Attendance": "Stable"
 }
 
@@ -45,7 +45,8 @@ get http://localhost:4000/getstudent
 Content-Type: application/json
 
 {
-        "Fac_ID":20329038
+        "Fac_ID":232903,
+        "courses":"BCA"
 }
 
 ###
@@ -60,10 +61,11 @@ Content-Type: application/json
 
 ###
 
-post http://localhost:4000/users/courses
+post http://localhost:4000/addcourses
 Content-Type: application/json
 
 {
         "Enroll_no":"2032903",
         "courses":"BBA"
 }
+
