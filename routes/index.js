@@ -39,17 +39,22 @@ router.post("/addstudent", async (req, res) => {
 
 /* GET Student. */
 
-router.get("/getstudent", async (req, res) => {
+router.post("/getstudent", async (req, res) => {
   const { Fac_ID, courses } = req.body
   if (!Fac_ID || !courses) {
     res.status(422).json({
       Error: "Faculty ID or courses Required !"
     })
   } else {
-    const getstudent = await student.find({ Course: courses, Fac_ID: Fac_ID })
-    console.log(getstudent);
-    res.json({
-      getstudent
+    student.find({ Course: courses, Fac_ID: Fac_ID }, (err, found) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.status(200).json({
+          found
+        })
+
+      }
     })
   }
 })
