@@ -79,13 +79,13 @@ router.post("/update", async (req, res) => {
 })
 
 router.post("/addcourses", (req, res) => {
-  const { courses, Enroll_no } = req.body
-  if (!courses || !Enroll_no) {
+  const { courses, Fac_ID } = req.body
+  if (!courses || !Fac_ID) {
     res.status(422).json({
       Error: "Field Required !"
     })
   } else {
-    User.updateOne({ Enroll_no: Enroll_no }, {
+    User.updateOne({ Fac_ID:Fac_ID }, {
       $push: {
         courses: courses
       }

@@ -6,12 +6,12 @@ post http://localhost:4000/users/Register
 Content-Type: application/json
 
 {
-        "Fac_ID":232903,
+        "Fac_ID":132904,
         "Fac_Name":"deepak",
         "Department":"Prof of Commerce",
         "Phone_no":7292098071,
-        "courses":"BCA",
-        "Email":"ayushdeepnegi@gmail.com",
+        "Course":""
+        "Email":"dnegi@gmail.com",
         "Password":"Deepak123"
 }
 
@@ -32,10 +32,10 @@ post http://localhost:4000/addstudent
 Content-Type: application/json
 
 {
-        "Fac_ID":232903,
+        "Fac_ID":132904,
         "Sname":"tushar",
         "Course":"BBA",
-        "Enroll_no":"02313702021",
+        "Enroll_no":"01913702021",
         "Attendance": "Stable"
 }
 
@@ -45,8 +45,8 @@ post http://localhost:4000/getstudent
 Content-Type: application/json
 
 {
-        "Fac_ID":232903,
-        "courses":"BCA"
+        "Fac_ID":132904,
+        "courses":"BBA"
 }
 
 ###
@@ -65,7 +65,7 @@ post http://localhost:4000/addcourses
 Content-Type: application/json
 
 {
-        "Enroll_no":"2032903",
+        "Fac_ID":"132904",
         "courses":"BBA"
 }
 
