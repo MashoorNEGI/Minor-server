@@ -6,11 +6,10 @@ post http://localhost:4000/users/Register
 Content-Type: application/json
 
 {
-        "Fac_ID":132904,
+        "Fac_ID":"132904",
         "Fac_Name":"deepak",
         "Department":"Prof of Commerce",
         "Phone_no":7292098071,
-        "Course":""
         "Email":"dnegi@gmail.com",
         "Password":"Deepak123"
 }
@@ -21,8 +20,8 @@ post http://localhost:4000/users/Login
 Content-Type: application/json 
 
 {
-        "Fac_ID":232903,
-        "Email":"deepaknegi@gmail.com",
+        "Fac_ID":132904,
+        "Email":"dnegi@gmail.com",
         "Password":"Deepak123"
 }
 
@@ -33,9 +32,9 @@ Content-Type: application/json
 
 {
         "Fac_ID":132904,
-        "Sname":"tushar",
-        "Course":"BBA",
-        "Enroll_no":"01913702021",
+        "Sname":"Ankit joshi",
+        "Course":"BCA",
+        "Enroll_no":"00413702020",
         "Attendance": "Stable"
 }
 
@@ -66,6 +65,6 @@ Content-Type: application/json
 
 {
         "Fac_ID":"132904",
-        "courses":"BBA"
+        "courses":"B.com"
 }
 

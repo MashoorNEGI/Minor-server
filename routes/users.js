@@ -12,9 +12,9 @@ router.get('/', function (req, res, next) {
 router.post("/Register", async (req, res) => {
 
   const { Fac_ID, Fac_Name, Department, Phone_no, Email, Password, courses } = req.body
-  if (!Fac_ID || !Fac_Name || !Department || !Phone_no || !Email || !Password || !courses) {
+  if (!Fac_ID || !Fac_Name || !Department || !Phone_no || !Email || !Password) {
     res.status(400).json({
-      Error: "Please Fill Data"
+      Error: "Please Fill Data Now"
     })
 
   }
@@ -28,10 +28,8 @@ router.post("/Register", async (req, res) => {
 
       const user = new User({ Fac_ID, Fac_Name, Department, courses, Email, Phone_no, Password })
       await user.save()
-
       res.json({ message: "user registerd successfully" })
     }
-
     else {
       res.status(401).json({
         error: "password is not strong"
@@ -64,7 +62,7 @@ router.post("/Login", async (req, res) => {
         res.status(400).json({
           Error: "Invalid credentials",
         });
-      } else {  
+      } else {
 
         res.json({
           message: "User Signin Successfully",

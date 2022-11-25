@@ -6,7 +6,6 @@ var user = new Schema(
         Fac_ID: {
             type: String,
             required: true,
-            unique: true
         },
         Fac_Name: {
             type: String,
