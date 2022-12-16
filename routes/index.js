@@ -85,7 +85,7 @@ router.post("/addcourses", (req, res) => {
       Error: "Field Required !"
     })
   } else {
-    User.updateOne({ Fac_ID:Fac_ID }, {
+    User.updateOne({ Fac_ID: Fac_ID }, {
       $push: {
         courses: courses
       }
@@ -97,6 +97,22 @@ router.post("/addcourses", (req, res) => {
         })
       } else {
         console.log(error);
+      }
+    })
+  }
+})
+router.post("/reset", async (req, res) => {
+  const { Course, Attendance } = req.body
+  if (!Course || !Attendance) {
+    res.status(422).json({
+      Error: "Field Required"
+    })
+  } else {
+    student.updateMany({ Course: Course }, { Attendance: Attendance }, (err, found) => {
+      if (!err) {
+        res.json({
+          message: "Reset Successfully"
+        })
       }
     })
   }
