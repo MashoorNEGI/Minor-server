@@ -68,12 +68,13 @@ Content-Type: application/json
         "courses":"B.com"
 }
 
+###
 
 post http://localhost:4000/reset
 Content-Type: application/json
 
 {
-        "Course":"BBA",
+        "Course":"BCA",
         "Attendance":"Stable"
 }
 
