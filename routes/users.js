@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const User = require("../model/user");
 const bcrypt = require('bcryptjs');
+const Contact = require('../model/contact');
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
@@ -79,5 +80,37 @@ router.post("/Login", async (req, res) => {
   }
 });
 
+router.post("/contact", async (req, res) => {
+  try {
+    const { Name, Email, Message } = req.body;
+    if (!Name || !Email || !Message) {
+      res.status(400).json({
+        Error: "Invalid credentials"
+      })
+    }
+    const MatchId = await User.findOne({ Email: Email })
+    if (MatchId) {
+      const send = new Contact({ Name, Email, Message })
+      await send.save()
+      res.status(200).json({
+        Message: "matched"
+      })
+    }
+    else {
+      res.status(400).json({
+        Message: "unmatched"
+      })
+    }
+  } catch (error) {
+    console.log(error);
+  }
+})
+router.get("/Admin", function (req, res) {
+  User.find(function (err, found) {
+    if (!err) {
+      res.status(200).json(found)
+    }
+  })
+})
 
 module.exports = router;

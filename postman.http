@@ -32,15 +32,15 @@ Content-Type: application/json
 
 {
         "Fac_ID":132904,
-        "Sname":"Ankit joshi",
+        "Sname":"Nikhil",
         "Course":"BCA",
-        "Enroll_no":"00413702020",
+        "Enroll_no":"04713702020",
         "Attendance": "Stable"
 }
 
 ###
 
-post http://localhost:4000/getstudent
+post http://localhost:4000/getstudent+-
 Content-Type: application/json
 
 {
@@ -78,3 +78,14 @@ Content-Type: application/json
         "Attendance":"Stable"
 }
 
+###
+post http://localhost:4000/users/contact
+Content-Type: application/json 
+
+{
+        "Name":"deeppak",
+        "Email":"dneg@gmail.com",
+        "Message":"Deepak123"
+}
+###
+GET  http://localhost:4000/users/Admin
